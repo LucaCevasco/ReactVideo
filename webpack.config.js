@@ -7,6 +7,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
+    publicPath: '/',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -27,11 +28,10 @@ module.exports = {
             loader: 'html-loader',
           },
         ],
- 
       },
       {
         test: /\.(s*)css$/,
-        use:[
+        use: [
           {
             loader: MiniCssExtractPlugin.loader,
           },
@@ -51,6 +51,9 @@ module.exports = {
         ],
       },
     ],
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebPackPlugin({
